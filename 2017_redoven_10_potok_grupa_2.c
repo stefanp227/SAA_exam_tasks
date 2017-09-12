@@ -27,9 +27,25 @@ int findGCD(int arr[], int n) {
 }
  
 int main() {
-    int arr[] = {2, 4, 6, 8, 16};
+    int arr[] = {2, 312, 126, 3168, 514, 4};
     int n = sizeof(arr)/sizeof(arr[0]);
+    int i, j, temp;
 
     printf("%d", findGCD(arr, n));
+
+    for (i = 0; i < n; i++) {
+	for(j = 0; j < (n - i + 1); j++) {
+	    if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+	}
+    }
+
+    for(i = 0; i < n; i++) {
+       printf("%d", arr[i]);
+    }
+
     return 0;
 }
